@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Post Data
+{% endblock title %}
+{% block body %} 
+<div class="conatiner" id="postdata">
+  <div class="h-100 p-5 text-bg-dark rounded-3">
+<form action="upload" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 style="color:white">Choose Image :-</h1>
+        <input type="file" name="upload" accept="image/*">
+    <h1 style="color:white">Enter Year :-</h1>
+        <input type="text" name="caption" style=" border: 0.25vw solid rgb(255, 255, 255); font-size: larger;">
+        <br>
+        <button class="btn btn-primary my-4" type="submit">Submit</button>
+  </form>
+  <h1>{{allscholars.count}}</h1>
+</div>
+</div>
+{% endblock body %} 

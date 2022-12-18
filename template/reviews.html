@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Reviews
+{% endblock title %}
+{% load humanize %}
+
+{% block body %} 
+
+<div>
+  <div style="text-align:center;">
+  <img src="static/images/review1.png" alt="" height="300vh" class="slide-in-top2" style="width:70vw">
+</div>
+  <center><form action='/postreviews' method='POST'>
+  {% csrf_token %}
+  <div class="form-group" style="padding-bottom:2vw;">
+    <label for="exampleInputEmail1" id="reviewlabel"><b><u>Write Your Reviews</u></b></label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required style="width: 300px; border-radius:20vw; background: transparent; border: 0.25vw solid yellow; color: rgb(255, 255, 255); margin-bottom:1vw; font-size: larger;">
+    <input type="text" class="form-control" id="batch" name="batch" placeholder="Enter Your Batch" required style="width: 300px; border-radius:20vw; background: transparent; border: 0.25vw solid yellow; color: rgb(255, 255, 255); margin-bottom:1vw; font-size: larger;">
+    <input type="text" name="review" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Review" style="width: 500px; border-radius:20vw; background: transparent; border: 0.25vw solid rgb(0, 229, 255); color: rgb(255, 255, 255); font-size: larger;">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <button type="submit" class="btn btn-success" id="buttonsub" style="margin-left:1vw;">Submit</button>
+</form></center>
+<h2 style="text-align:center; color:white;"> Reviews ({{allreviews.count}})</h2>
+</div>
+
+<!-- Reviews -->
+
+{% for review in allreviews %}
+<div class="container text-dark" style="padding-left:0px">
+    <div class="row d-block justify-content-center">
+        <div class="col-md-11 col-lg-9 col-xl-7">
+            <div class="d-flex flex-start mb-1">
+                <img class="rounded-circle shadow-1-strong me-3" src="static/images/user.png" alt="avatar" width="60" height="55">
+                <div class="card w-100 shadow-lg h-md-250 my-4">
+                    <div class="card-body p-4" style="box-shadow: rgb(31, 202, 199) 0px 5px 15px;">
+                        <div class="" style="font-size:large;">
+                            <b>{{review.name}}</b> <span class="badge bg-secondary ">{{review.timestamp|naturaltime}}</span>
+                            <p>
+                                {{review.review}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    {% endfor %}
+
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Scholars
+{% endblock title %}
+
+{% block body %} 
+<div id="scholars">
+    <h1 style="padding-bottom:2vw; font-weight: bold; font-size:5rem">Scholars</h1>
+    <img src="static/images/scholars2.png" width="100%" style="filter: drop-shadow(0 0 0.75rem rgb(238, 238, 238));">
+</div>
+    <div>
+    <img src="static/images/caps12.png" class="slide-in-bot3" width="20%" style="position:absolute; top:160px; right:10px; filter: drop-shadow(0 0 0.75rem rgb(40, 125, 164));">
+    <img src="static/images/caps13.png" class="slide-in-bot4" width="40%" style="position:absolute; top:150px; right:70px; filter: drop-shadow(0 0 0.75rem rgb(40, 125, 164));">
+    <img src="static/images/caps14.png" class="slide-in-bot5" width="50%" style="position:absolute; top:150px; filter: drop-shadow(0 0 0.75rem rgb(40, 125, 164));">
+</div>
+<div>
+    <h1 style="padding-bottom:2vw; font-weight: bold; font-size:5vw; color:white; padding-top:2vw;">Result <span style="color:aqua; text-decoration: underline;">2022</span></h1>
+    <div  style="padding-left: 5vw">
+    {% for Image in allscholars %}
+    {% if Image.Caption == "2022" %}
+    <img src= "{{ Image.Image.url }}"  width="20%" style="margin-right:3vw; display:inline-block;">
+    {% endif %}
+    {% endfor %}
+
+    <h1 style="padding-bottom:2vw; font-weight: bold; font-size:5vw; color:white; padding-top:2vw;">Result <span style="color:aqua; text-decoration: underline;">2020</span></h1>
+    {% for Image in allscholars %}
+    {% if Image.Caption == "2020" %}
+    <img src= "{{ Image.Image.url }}"  width="20%" style="margin-right:3vw; display:inline-block;">
+    {% endif %}
+    {% endfor %}
+</div>
+</div>
+
+
+{% endblock body %}
